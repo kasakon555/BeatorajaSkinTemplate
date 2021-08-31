@@ -1,5 +1,6 @@
 --[[
     基本パラメータ定義
+    @author : KASAKO
 ]]
 local m = {}
 m.ACC = {

@@ -1,5 +1,6 @@
 --[[
-    オフセット
+    オフセット定義
+    @author : KASAKO
 ]]
 local m = {}
 m.SCRATCHANGLE_1P = 1

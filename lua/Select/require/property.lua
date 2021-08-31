@@ -1,9 +1,10 @@
 local m = {}
 
 --[[
-	初期値
+	スキンプロパティ
 	カスタムオプション：900-999
 	オフセット：40-
+	@author : KASAKO
 ]]
 local customoptionNumber = 899
 local categoryNumber = 0

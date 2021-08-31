@@ -1,7 +1,10 @@
 --[[
-    カスタムタイマー
-    author : KASAKO
+    カスタムタイマーを定義する場合はここに記述
+    dst定義のtimerプロパティで使用
+    @author : KASAKO
 ]]
+local timer_util = require("timer_util")
+-- カスタムタイマーは9999から
 local CUSTOMTIMER_ID = 9999
 -- タイマー値をインクリメント
 local function getCustomtimerId()
@@ -10,9 +13,11 @@ local function getCustomtimerId()
 end
 
 local m = {}
+-- タイマー名
+-- テストタイマー（常にtrueを返す）
 m.example = getCustomtimerId()
 
--- タイマーの発動指定
+-- タイマー挙動
 m.customTimers = {
     {id = m.example, timer = timer_util.timer_observe_boolean(function()
         return true

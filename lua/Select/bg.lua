@@ -1,5 +1,6 @@
 --[[
-    背景を表示する
+    背景表示
+    @author : KASAKO
 ]]
 
 local function load()
@@ -17,8 +18,8 @@ local function load()
     end
 
     table.insert(parts.destination, {
-        id = "background", dst = {
-            {x = 0, y = 0, w = 1920, h = 1080},
+        id = "background", timer = CUSTOM.TIMER.example, dst = {
+            {time = 0, x = 0, y = 0, w = 1920, h = 1080},
         }
     })
     return parts

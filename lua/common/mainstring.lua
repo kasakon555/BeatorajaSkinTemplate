@@ -1,5 +1,5 @@
 --[[
-    文字列
+    文字列定義
     @author KASAKO
 ]]
 local m = {}

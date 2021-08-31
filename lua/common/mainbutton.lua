@@ -1,5 +1,6 @@
 --[[
-    ボタン
+    ボタン定義
+    @author : KASAKO
 ]]
 local m = {}
 m.MODE = 11

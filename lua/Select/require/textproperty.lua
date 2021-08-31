@@ -1,9 +1,6 @@
 --[[
-    テキスト関連
-    align
-        0:左
-        1:中央
-        2:右
+    テキスト設定
+    @author : KASAKO
 ]]
 
 local module = {}

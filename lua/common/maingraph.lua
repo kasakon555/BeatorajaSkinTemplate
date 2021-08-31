@@ -1,5 +1,6 @@
 --[[
-    グラフ
+    グラフ定義
+    @author : KASAKO
 ]]
 local m = {}
 m.MUSIC_PROGRESS = 101

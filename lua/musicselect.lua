@@ -1,18 +1,14 @@
 --[[
 	曲選択画面
 	blog : https://www.kasacontent.com/tag/modernchictemplateengine/
-    author : KASAKO
+    @author : KASAKO
 ]]
 DEBUG = false
-
--- モジュール読み込み
 main_state = require("main_state")
-timer_util = require("timer_util")
-
+-- スキンプロパティ
 PROPERTY = require("Select.require.property")
-
--- スキンヘッダ読み込み
-local header = require("Select.require.header").load(5)
+-- スキンヘッダ
+local header = require("Select.require.header").load()
 -- テーブルに要素を追加する
 local function add_all(list, t)
 	if t then
@@ -25,7 +21,6 @@ end
 local function main()
 	-- 基本定義読み込み
 	MAIN = require("common.define")
-	-- カスタム定義読み込み
 	CUSTOM = require("common.define2")
 	-- テキスト関連
 	local textProperty = require("Select.require.textproperty")
@@ -44,7 +39,7 @@ local function main()
 	skin.font = textProperty.font
 	skin.text = textProperty.text
 	skin.songlist = {}
-	skin.customTimers = {}
+	skin.customTimers = CUSTOM.TIMER.customTimers
 	skin.judgegraph = {}
 	skin.bpmgraph = {}
 	skin.destination = {}

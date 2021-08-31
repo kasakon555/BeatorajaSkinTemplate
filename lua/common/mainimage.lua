@@ -1,5 +1,6 @@
 --[[
-    イメージ
+    イメージ定義
+    @author : KASAKO
 ]]
 local m = {}
 m.STAGEFILE = 100

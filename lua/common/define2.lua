@@ -1,5 +1,6 @@
 --[[
     カスタムパラメータ定義
+    @author : KASAKO
 ]]
 local m = {}
 m.OP = require("common.customoption")
