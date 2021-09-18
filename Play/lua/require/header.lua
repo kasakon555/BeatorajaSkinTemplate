@@ -1,0 +1,26 @@
+--[[
+    0:7k, 1:5k, 2:12k, 3:10k, 4:9k, 5:select, 6:decide, 7:result, 15:courceresult, 16:24k, 17:24kDouble
+]]
+local function load(type)
+    local property = {
+        type = type,
+        name = "ModernChicPlay(SCURO)-" .."(MCTE)",   --(MCTE)表記は消さないで！
+        w = 1920,
+        h = 1080,
+        loadend = 3500,     -- ロード開始からロード終了までの最低時間
+        playstart = 1000,   -- ロード終了から曲開始までの時間 timer40で重要
+        scene = 3600000,
+        input = 0,          -- スキップ可能 timer1で重要
+        close = 3000,       -- 閉店時の処理時間 timer3で重要
+        fadeout = 500,      -- フェードアウト時にこの時間が過ぎると次のシーンへ timer2で重要
+        property = PROPERTY.property,
+        filepath = PROPERTY.filepath,
+        offset = PROPERTY.offset,
+        category = PROPERTY.category
+    }
+    return property
+end
+
+return {
+    load = load
+}

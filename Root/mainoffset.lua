@@ -1,0 +1,20 @@
+--[[
+    オフセット定義
+    DATE:21/09/11
+    @author : KASAKO
+]]
+local m = {}
+m.SCRATCHANGLE_1P = 1
+m.SCRATCHANGLE_2P = 2
+m.LIFT = 3
+m.LANECOVER = 4
+m.HIDDEN_COVER = 5
+m.ALL = 10
+m.NOTES_1P = 30
+m.JUDGE_1P = 32
+m.JUDGEDETAIL_1P = 33
+m.JUDGE_2P = 32
+m.JUDGEDETAIL_2P = 33
+m.JUDGE_3P = 32
+m.JUDGEDETAIL_3P = 33
+return m
