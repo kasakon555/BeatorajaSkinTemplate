@@ -4,7 +4,7 @@
 local function load(type)
     local property = {
         type = type,
-        name = "ModernChicPlay(SCURO)-" .."(MCTE)",   --(MCTE)表記は消さないで！
+        name = "PlayTemp(SCURO)-" .."(MCTE)",   --(MCTE)表記は消さないで！
         w = 1920,
         h = 1080,
         loadend = 3500,     -- ロード開始からロード終了までの最低時間

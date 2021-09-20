@@ -25,7 +25,10 @@ local function main()
 	local skin = {}
 	CUSTOM.LOAD_HEADER(skin, header)
 
-	skin.source = {}
+	skin.source = {
+		{id = 1, path = "Select/bg/image/*.png"},
+		{id = 2, path = "Select/bg/movie/*.mp4"}
+	}
 	skin.image = {}
 	skin.imageset = {}
 	skin.graph = {}

@@ -38,12 +38,13 @@ local customoption = {
             label = addCategoryNumber()
         }
     end,
-    chiled = function(name)
-        return {
-            name = name,
-            num = addCustomoptionNumber()
-        }
-    end,
+	-- カスタムオプション小項目を作成する
+	chiled = function(cName, pName)
+		local num = addCustomoptionNumber()
+		local chiled = {name = cName, num = num}
+		local condition = function() return skin_config.option[pName] == num end
+		return chiled, condition
+	end,
 	-- ファイルパス項目を作成
 	filepath = function(name, path)
 		return {
@@ -61,12 +62,6 @@ local customoption = {
 			num = addOffsetNumber()
 		}
 	end,
-    -- カスタムオプション簡易条件式
-    createCondition = function(name, customoptionNumber)
-        return function()
-            return skin_config.option[name] == customoptionNumber
-        end
-    end,
 	-- オフセット情報アクセス用
 	offsetInfo = function(offset)
 		return {
@@ -91,28 +86,17 @@ local customoption = {
 }
 
 local bgPattern = customoption.parent("背景の種類")
-bgPattern.image = customoption.chiled("静止画")
-bgPattern.movie = customoption.chiled("動画")
-module.isBgImage = customoption.createCondition(bgPattern.name, bgPattern.image.num)
-module.isBgMovie = customoption.createCondition(bgPattern.name, bgPattern.movie.num)
-
+bgPattern.image, module.isBgImage = customoption.chiled("静止画", bgPattern.name)
+bgPattern.movie, module.isBgMovie = customoption.chiled("動画", bgPattern.name)
 local bitmapFont = customoption.parent("画像フォントの使用")
-bitmapFont.off = customoption.chiled("使用しない")
-bitmapFont.on = customoption.chiled("使用する")
-module.isOutlineFont = customoption.createCondition(bitmapFont.name, bitmapFont.off.num)
-module.isBitmapFont = customoption.createCondition(bitmapFont.name, bitmapFont.on.num)
-
+bitmapFont.off, module.isOutlineFont = customoption.chiled("使用しない", bitmapFont.name)
+bitmapFont.on, module.isBitmapFont = customoption.chiled("使用する", bitmapFont.name)
 local stageFile = customoption.parent("ステージファイル")
-stageFile.off = customoption.chiled("表示しない")
-stageFile.on = customoption.chiled("表示する")
-module.isStagefileOff = customoption.createCondition(stageFile.name, stageFile.off.num)
-module.isStagefileOn = customoption.createCondition(stageFile.name, stageFile.on.num)
-
+stageFile.off, module.isStagefileOff = customoption.chiled("表示しない", stageFile.name)
+stageFile.on, module.isStagefileOn = customoption.chiled("表示する", stageFile.name)
 local notesGraph = customoption.parent("ノーツ分布グラフ")
-notesGraph.off = customoption.chiled("表示しない")
-notesGraph.on = customoption.chiled("表示する")
-module.isNotesGraphOff = customoption.createCondition(notesGraph.name, notesGraph.off.num)
-module.isNotesGraphOn = customoption.createCondition(notesGraph.name, notesGraph.on.num)
+notesGraph.off, module.isNotesGraphOff = customoption.chiled("表示しない", notesGraph.name)
+notesGraph.on, module.isNotesGraphOn = customoption.chiled("表示する", notesGraph.name)
 
 local bgImage = customoption.filepath("背景（静止画）Decide/bg/image/*.png", "Decide/bg/image/*.png")
 local bgMovie = customoption.filepath("背景（動画）Decide/bg/movie/*.mp4", "Decide/bg/movie/*.mp4")

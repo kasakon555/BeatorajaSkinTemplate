@@ -1,6 +1,7 @@
 
 local module = {}
 
+--[[
 if PROPERTY.isOutlineFont() then
     module.font = {
         {id = 0, path = "Select/font/ttf/mgenplus-1c-black.ttf"},
@@ -15,6 +16,13 @@ elseif  PROPERTY.isBitmapFont() then
         {id = 2, path = "Select/font/fnt/sub.fnt", type = 1}
     }
     module.text = {}
-end
+end]]
+
+module.font = {
+    {id = 0, path = "Select/font/ttf/mgenplus-1c-black.ttf"},
+    {id = 1, path = "Select/font/ttf/mgenplus-1c-medium.ttf"},
+}
+module.text = {
+}
 
 return module
