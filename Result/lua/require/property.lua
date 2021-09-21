@@ -54,32 +54,18 @@ local customoption = {
 	end,
 	-- オフセット項目を作成
 	offset = function(name)
-		return {
-			name = name,
-			label = addCategoryNumber(),
-			num = addOffsetNumber()
+		local label = addCategoryNumber()
+		local num = addOffsetNumber()
+		local offset = {name = name, label = label, num = num}
+		local info = {
+			num = num,
+			alpha = function() return skin_config.offset[name].a end,
+			width = function() return skin_config.offset[name].w end,
+			height = function() return skin_config.offset[name].h end,
+			x = function() return skin_config.offset[name].x end,
+			y = function() return skin_config.offset[name].y end
 		}
-	end,
-	-- オフセット情報アクセス用
-	offsetInfo = function(offset)
-		return {
-			num = offset.num,
-			x = function()
-				return skin_config.offset[offset.name].x
-			end,
-			y = function()
-				return skin_config.offset[offset.name].y
-			end,
-			width = function()
-				return skin_config.offset[offset.name].w
-			end,
-			height = function()
-				return skin_config.offset[offset.name].h
-			end,
-			alpha = function()
-				return skin_config.offset[offset.name].a
-			end
-		}
+		return offset, info
 	end
 }
 
@@ -89,10 +75,10 @@ local function load(isResult)
 	bitmapFont.on, module.isBitmapFont = customoption.chiled("使用する", bitmapFont.name)
 
 	-- オフセット関連
-	local bgBrightness = customoption.offset("背景の明るさ 0~255 (255で真っ暗になります)")
-	module.offsetBgBrightness = bgBrightness.num
-	local charPosition = customoption.offset("キャラクター表示位置調整")
-	module.offsetCharPosition = charPosition.num
+	local bgBrightness
+	bgBrightness, module.offsetBgBrightness = customoption.offset("背景の明るさ 0~255 (255で真っ暗になります)")
+	local charPosition
+	charPosition, module.offsetCharPosition = customoption.offset("キャラクター表示位置調整")
 
 	module.property = {
 		--カスタムオプション定義
