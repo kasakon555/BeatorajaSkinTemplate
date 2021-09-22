@@ -26,7 +26,9 @@ local function main()
 	end
 	local skin = {}
 	CUSTOM.LOAD_HEADER(skin, header)
-	
+--[[
+	ここから-----------------------------------------------------------------------------
+]]
 	skin.source =  {}
 	skin.font = textProperty.font
 	skin.text = textProperty.text
@@ -37,29 +39,18 @@ local function main()
 	skin.hiddenCover = {}
 	skin.liftCover = {}
 	skin.graph = {}
-	skin.bga = {id = "bga"}
+	skin.bga = {}
 	skin.judgegraph = {}
 	skin.bpmgraph = {}
 	skin.timingvisualizer = {}
 	skin.judge = {}
 	skin.gauge = {}
 	skin.destination = {}
-	
-	-- サンプル
-	do
-		local background_path = skin_config.get_path("Play/lua/background.lua")
-		local background_status, background_parts = pcall(function()
-			return dofile(background_path).load(3)
-		end)
-		if background_status and background_parts then
-			CUSTOM.ADD_ALL(skin.image, background_parts.image)
-			CUSTOM.ADD_ALL(skin.destination, background_parts.destination)
-		end
-	end
-	
 	return skin
 end
-
+--[[
+	ここまで-----------------------------------------------------------------------------
+]]
 return{
 	header = header,
 	main = main

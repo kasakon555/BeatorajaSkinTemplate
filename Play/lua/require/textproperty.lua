@@ -1,5 +1,8 @@
+--[[
+	フォント定義
+	@author : KASAKO
+]]
 local module = {}
-
 if PROPERTY.isOutlineFont() then
     module.font = {
         {id = 0, path = "Play/font/ttf/mgenplus-1c-black.ttf"},
@@ -14,5 +17,4 @@ elseif PROPERTY.isBitmapFont() then
     }
     module.text = {}
 end
-
 return module

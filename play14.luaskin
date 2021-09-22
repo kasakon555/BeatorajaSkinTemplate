@@ -1,4 +1,4 @@
-local t = require("play7_hw")
+local t = require("play14")
 if skin_config then
 	return t.main()
 else

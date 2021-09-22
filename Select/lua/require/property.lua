@@ -1,10 +1,8 @@
-local module = {}
-
 --[[
-	初期値
-	カスタムオプション：900-999
-	オフセット：40-
+	カスタムオプション定義
+	@author : KASAKO
 ]]
+local module = {}
 local customoptionNumber = 899
 local categoryNumber = 0
 local offsetNumber = 39
@@ -69,33 +67,30 @@ local customoption = {
 	end
 }
 
-local bgPattern = customoption.parent("背景の種類")
-bgPattern.image, module.isBgImage = customoption.chiled("静止画", bgPattern.name)
-bgPattern.movie, module.isBgMovie = customoption.chiled("動画", bgPattern.name)
+local bitmapFont = customoption.parent("画像フォントの使用")
+bitmapFont.off, module.isOutlineFont = customoption.chiled("使用しない", bitmapFont.name)
+bitmapFont.on, module.isBitmapFont = customoption.chiled("使用する", bitmapFont.name)
 
 module.property = {
-	-- カスタムオプション定義
-	{name = bgPattern.name, def = bgPattern.image.name, category = bgPattern.label, item = {
-		{name = bgPattern.image.name, op = bgPattern.image.num},
-		{name = bgPattern.movie.name, op = bgPattern.movie.num},
+	{name = bitmapFont.name, def = bitmapFont.off.name, category = bitmapFont.label, item = {
+		{name = bitmapFont.off.name, op = bitmapFont.off.num},
+		{name = bitmapFont.on.name, op = bitmapFont.on.num},
 	}},
 }
 
-module.filepath = {
-
-}
+module.filepath = {}
 
 -- offsetのユーザー定義は40以降
-module.offset = {
-
-}
+module.offset = {}
 
 --[[
 	カスタムカテゴリ
 	カスタムオプション、ファイルパス、オフセットを関連付け
 ]]
 module.category = {
-
+	{name = "メインオプション", item = {
+        bitmapFont.label,
+	}},
 }
 
 if DEBUG then

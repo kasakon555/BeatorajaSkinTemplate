@@ -1,11 +1,8 @@
--- DP用（10鍵、14鍵）用プロパティ
-local module = {}
-
 --[[
-	初期値
-	カスタムオプション：900-999
-	オフセット：40-
+	DP用（10鍵、14鍵）用カスタムオプション定義
+	@author : KASAKO
 ]]
+local module = {}
 local customoptionNumber = 899
 local categoryNumber = 0
 local offsetNumber = 39
@@ -73,15 +70,15 @@ local customoption = {
 }
 
 local function load(is10keys)
-	local targetSwitch = customoption.parent("ターゲット差分表示")
-	targetSwitch.off, module.isDiffTargetOff = customoption.chiled("なし", targetSwitch.name)
-	targetSwitch.on, module.isDiffTargetOn = customoption.chiled("あり", targetSwitch.name)
+	local bitmapFont = customoption.parent("画像フォントの使用")
+	bitmapFont.off, module.isOutlineFont = customoption.chiled("使用しない", bitmapFont.name)
+	bitmapFont.on, module.isBitmapFont = customoption.chiled("使用する", bitmapFont.name)
 
 	module.property = {
 		--カスタムオプション定義
-		{name = targetSwitch.name, def = targetSwitch.off.name, category = targetSwitch.label, item = {
-			{name = targetSwitch.off.name, op = targetSwitch.off.num},
-			{name = targetSwitch.on.name, op = targetSwitch.on.num},
+		{name = bitmapFont.name, category = bitmapFont.label, def = bitmapFont.off.name, item = {
+			{name = bitmapFont.off.name, op = bitmapFont.off.num},
+			{name = bitmapFont.on.name, op = bitmapFont.on.num},
 		}},
 	}
 
@@ -99,7 +96,9 @@ local function load(is10keys)
 		カスタムオプション、ファイルパス、オフセットを関連付け
 	]]
 	module.category = {
-
+		{name = "メインオプション", item = {
+			bitmapFont.label,
+		}},
 	}
 
 	if DEBUG then

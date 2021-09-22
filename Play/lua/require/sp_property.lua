@@ -1,11 +1,8 @@
--- SP用（5鍵、7鍵）用プロパティ
-local module = {}
-
 --[[
-	初期値
-	カスタムオプション：900-999
-	オフセット：40-
+	SP用（5鍵、7鍵）用カスタムオプション定義
+	@author : KASAKO
 ]]
+local module = {}
 local customoptionNumber = 899
 local categoryNumber = 0
 local offsetNumber = 39
@@ -73,15 +70,15 @@ local customoption = {
 }
 
 local function load(is5keys)
-	local playSide = customoption.parent("プレイサイド")
-	playSide.left, module.isLeftScratch = customoption.chiled("1P（左スクラッチ）", playSide.name)
-	playSide.right, module.isRightScratch = customoption.chiled("2P（右スクラッチ）", playSide.name)
+	local bitmapFont = customoption.parent("画像フォントの使用")
+	bitmapFont.off, module.isOutlineFont = customoption.chiled("使用しない", bitmapFont.name)
+	bitmapFont.on, module.isBitmapFont = customoption.chiled("使用する", bitmapFont.name)
 
 	--カスタムオプション定義
 	module.property = {
-		{name = playSide.name, def = playSide.left.name, category = playSide.label, item = {
-			{name = playSide.left.name, op = playSide.left.num},
-			{name = playSide.right.name, op = playSide.right.num},
+		{name = bitmapFont.name, category = bitmapFont.label, def = bitmapFont.off.name, item = {
+			{name = bitmapFont.off.name, op = bitmapFont.off.num},
+			{name = bitmapFont.on.name, op = bitmapFont.on.num},
 		}},
 	}
 
@@ -100,7 +97,9 @@ local function load(is5keys)
 		カスタムオプション、ファイルパス、オフセットを関連付け
 	]]
 	module.category = {
-
+		{name = "メインオプション", item = {
+			bitmapFont.label,
+		}},
 	}
 
 	if DEBUG then

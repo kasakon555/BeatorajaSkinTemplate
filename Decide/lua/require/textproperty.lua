@@ -1,5 +1,8 @@
+--[[
+	フォント定義
+	@author : KASAKO
+]]
 local module = {}
-
 if PROPERTY.isOutlineFont() then
     -- アウトラインフォント
     module.font =  {
@@ -15,5 +18,4 @@ elseif PROPERTY.isBitmapFont() then
     }
     module.text = {}
 end
-
 return module

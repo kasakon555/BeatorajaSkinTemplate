@@ -16,7 +16,9 @@ local function main()
 	local textProperty = require("Decide.lua.require.textproperty")
 	local skin = {}
 	CUSTOM.LOAD_HEADER(skin, header)
-	
+--[[
+	ここから-----------------------------------------------------------------------------
+]]
 	skin.source =  {}
 	skin.font = textProperty.font
 	skin.text = textProperty.text
@@ -28,7 +30,9 @@ local function main()
 	
 	return skin
 end
-
+--[[
+	ここまで-----------------------------------------------------------------------------
+]]
 return{
 	header = header,
 	main = main

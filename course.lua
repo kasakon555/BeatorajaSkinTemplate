@@ -27,7 +27,7 @@ local function main()
 	local skin = {}
 	CUSTOM.LOAD_HEADER(skin, header)
 	--[[
-		ここまで触らない-----------------------------------------------------------------------------
+		ここから-----------------------------------------------------------------------------
 	]]
 	skin.source =  {}
 	skin.font = textProperty.font
@@ -45,24 +45,12 @@ local function main()
 	skin.customTimers = {}
 	skin.customEvents = {}
 	skin.destination = {}
-	
-	-- サンプル
-	do
-		local path = skin_config.get_path("Result/lua/background.lua")
-		local status, parts = pcall(function()
-			return dofile(path).load()
-		end)
-		if status and parts then
-			CUSTOM.ADD_ALL(skin.source, parts.source)
-			CUSTOM.ADD_ALL(skin.image, parts.image)
-			CUSTOM.ADD_ALL(skin.imageset, parts.imageset)
-			CUSTOM.ADD_ALL(skin.destination, parts.destination)
-		end
-	end
 
 	return skin
 end
-
+--[[
+	ここまで-----------------------------------------------------------------------------
+]]
 return{
 	header = header,
 	main = main

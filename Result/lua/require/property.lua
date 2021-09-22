@@ -1,7 +1,8 @@
--- リザルト用プロパティ
-
+--[[
+	カスタムオプション定義
+	@author : KASAKO
+]]
 local module = {}
-
 -- 初期値
 local offsetNumber = 39
 local customoptionNumber = 899
@@ -74,12 +75,6 @@ local function load(isResult)
 	bitmapFont.off, module.isOutlineFont = customoption.chiled("使用しない", bitmapFont.name)
 	bitmapFont.on, module.isBitmapFont = customoption.chiled("使用する", bitmapFont.name)
 
-	-- オフセット関連
-	local bgBrightness
-	bgBrightness, module.offsetBgBrightness = customoption.offset("背景の明るさ 0~255 (255で真っ暗になります)")
-	local charPosition
-	charPosition, module.offsetCharPosition = customoption.offset("キャラクター表示位置調整")
-
 	module.property = {
 		--カスタムオプション定義
 		{name = bitmapFont.name, def = bitmapFont.off.name, category = bitmapFont.label, item = {
@@ -88,21 +83,18 @@ local function load(isResult)
 		}},
 	}
 
-	module.filepath = {
-
-	}
+	module.filepath = {}
 
 	-- offsetのユーザー定義は40以降
-	module.offset = {
-		{name = bgBrightness.name, category = bgBrightness.label, id = bgBrightness.num, a = 0},
-		{name = charPosition.name, category = charPosition.label, id = charPosition.num, x = 0, y = 0},
-	}
+	module.offset = {}
 
 	--[[
 		カスタムオプション、ファイルパス、オフセットを関連付け
 	]]
 	module.category = {
-		
+		{name = "メインオプション", item = {
+			bitmapFont.label,
+		}},
 	}
 
 	if DEBUG then

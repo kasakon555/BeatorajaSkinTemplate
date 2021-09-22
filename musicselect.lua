@@ -24,11 +24,10 @@ local function main()
 	end
 	local skin = {}
 	CUSTOM.LOAD_HEADER(skin, header)
-
-	skin.source = {
-		{id = 1, path = "Select/bg/image/*.png"},
-		{id = 2, path = "Select/bg/movie/*.mp4"}
-	}
+--[[
+	ここから-----------------------------------------------------------------------------
+]]
+	skin.source = {}
 	skin.image = {}
 	skin.imageset = {}
 	skin.graph = {}
@@ -42,21 +41,11 @@ local function main()
 	skin.bpmgraph = {}
 	skin.destination = {}
 
-	-- サンプル
-	do
-		local background_path = skin_config.get_path("Select/lua/background.lua")
-		local background_status, background_parts = pcall(function()
-			return dofile(background_path).load()
-		end)
-		if background_status and background_parts then
-			CUSTOM.ADD_ALL(skin.image, background_parts.image)
-			CUSTOM.ADD_ALL(skin.destination, background_parts.destination)
-		end
-	end
-
 	return skin
 end
-
+--[[
+	ここまで-----------------------------------------------------------------------------
+]]
 return{
 	header = header,
 	main = main
